@@ -1,13 +1,9 @@
 # Star.SqlData
 
+[![CI](https://github.com/xingyungames/StarMySql/actions/workflows/ci.yml/badge.svg)](https://github.com/xingyungames/StarMySql/actions/workflows/ci.yml)
 [![.NET](https://img.shields.io/badge/.NET-8.0-512BD4)](https://dotnet.microsoft.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![MySQL](https://img.shields.io/badge/MySQL-5.7%2B-4479A1)](https://www.mysql.com/)
-
-<!--
-  CI 徽章：把下面的 OWNER 换成你的 GitHub 用户名/组织名后取消注释。
-  [![CI](https://github.com/OWNER/StarDataBase/actions/workflows/ci.yml/badge.svg)](https://github.com/OWNER/StarDataBase/actions/workflows/ci.yml)
--->
 
 基于 MySQL 的轻量级 .NET 数据访问层：**白名单校验 + 参数化查询 + 敏感字段脱敏 + 统一响应格式**，并提供开箱即用的通用仓储基类。
 
@@ -47,8 +43,8 @@
 **方式一：直接引用源码项目**
 
 ```bash
-git clone https://github.com/OWNER/StarDataBase.git
-dotnet add <你的项目>.csproj reference StarDataBase/src/Star.SqlData/Star.SqlData.csproj
+git clone https://github.com/xingyungames/StarMySql.git
+dotnet add <你的项目>.csproj reference StarMySql/src/Star.SqlData/Star.SqlData.csproj
 ```
 
 **方式二：作为 NuGet 包引用**（执行 `dotnet pack` 后发布到本地源或私有源）
@@ -161,7 +157,7 @@ var total = Convert.ToInt32(await command.ExecuteScalarAsync());
 ## 项目结构
 
 ```
-StarDataBase/
+StarMySql/
 ├── src/Star.SqlData/                 # 主库（net8.0）
 │   ├── Configuration.cs              # 连接配置解析（环境变量 / appSettings）
 │   ├── StarDataConnection.cs         # 公开连接入口
@@ -214,7 +210,7 @@ CI（`.github/workflows/ci.yml`）会在 PR 上执行：还原 → 构建 → �
 
 ## 许可证
 
-[MIT](LICENSE) © 2026 StarDataBase contributors
+[MIT](LICENSE) © 2026 星云游(星涵)
 
 ---
 

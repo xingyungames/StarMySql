@@ -7,15 +7,18 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>disable</ImplicitUsings>
 
-    <!-- NuGet 包元数据（发布前请按需替换 Authors / RepositoryUrl） -->
+    <!-- NuGet 包元数据 -->
     <PackageId>Star.SqlData</PackageId>
     <Version>1.0.0</Version>
-    <Authors>StarDataBase contributors</Authors>
+    <Authors>星云游(星涵)</Authors>
+    <Copyright>Copyright (c) 2026 星云游(星涵)</Copyright>
     <Description>基于 MySQL 的轻量数据访问层：表名/字段名白名单校验、参数化查询、敏感字段脱敏、统一 ApiResponse 响应与通用仓储基类。</Description>
     <PackageTags>mysql;data-access;repository;sql;whitelist;aspnetcore</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <!-- <RepositoryUrl>https://github.com/OWNER/StarDataBase</RepositoryUrl> -->
+    <RepositoryUrl>https://github.com/xingyungames/StarMySql</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageProjectUrl>https://github.com/xingyungames/StarMySql</PackageProjectUrl>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <IncludeSymbols>true</IncludeSymbols>

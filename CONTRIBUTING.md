@@ -1,6 +1,6 @@
 # 贡献指南
 
-感谢你愿意帮忙改进 `Star.DataBase`！本文说明本地开发流程、代码约定与评审关注点。
+感谢你愿意帮忙改进 `StarMySql`（`Star.SqlData` 库）！本文说明本地开发流程、代码约定与评审关注点。
 
 ## 开始之前
 
@@ -79,19 +79,12 @@ feat(constants): 增加 table_h 及其字段白名单
 
 参与本项目的讨论与贡献即表示同意：对事不对人、尊重不同经验水平、不发布他人隐私或凭据。维护者有权删除不当内容并拒绝违反准则的贡献。
 
-## 维护者清单：首次推送到 GitHub
+## 维护者备忘
 
-仓库里所有外部链接使用 `OWNER` 占位符。推送到 GitHub 前请全局替换（把 `OWNER` 换成用户名/组织名）：
+仓库地址：<https://github.com/xingyungames/StarMySql>。发布前建议确认：
 
-| 文件 | 需要替换的内容 |
-| --- | --- |
-| `README.md` | CI 徽章（第 9 行，替换后取消注释）、`git clone` 地址 |
-| `.github/ISSUE_TEMPLATE/config.yml` | 安全策略与 Discussions 地址 |
-| `.github/ISSUE_TEMPLATE/bug_report.yml` | SECURITY.md 链接 |
-| `src/Star.SqlData/Star.SqlData.csproj` | 发布 NuGet 前取消注释 `RepositoryUrl` |
-
-另外建议：
-
-1. 在 GitHub 仓库设置中启用 **Private vulnerability reporting**（`SECURITY.md` 依赖它）；
-2. 确认默认分支为 `main`（CI 触发条件与徽章都基于它）；
-3. 发布 NuGet 包前，用 `dotnet pack src/Star.SqlData/Star.SqlData.csproj -c Release` 检查 `README.md` 是否被打进包里。
+1. 已在仓库设置中启用 **Private vulnerability reporting**（`SECURITY.md` 的流程依赖它）；
+2. 默认分支为 `main`（CI 触发条件与 README 徽章都基于它）；
+3. 若未开启 Discussions，`.github/ISSUE_TEMPLATE/config.yml` 中的讨论入口会 404，请按需删除该条目；
+4. 发布 NuGet 包前用 `dotnet pack src/Star.SqlData/Star.SqlData.csproj -c Release` 检查 `README.md` 是否被打进包里；
+5. 若后续迁移/改名仓库，需同步更新 `README.md`、`Star.SqlData.csproj` 的 `RepositoryUrl`、`.github/ISSUE_TEMPLATE/config.yml`。

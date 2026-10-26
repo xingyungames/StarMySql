@@ -7,7 +7,7 @@ body:
     attributes:
       value: |
         感谢反馈！请尽量提供可复现的信息。
-        如果是安全问题，请改用私密渠道：见 [SECURITY.md](https://github.com/OWNER/StarDataBase/blob/main/SECURITY.md)。
+        如果是安全问题，请改用私密渠道：见 [SECURITY.md](https://github.com/xingyungames/StarMySql/blob/main/SECURITY.md)。
 
   - type: textarea
     id: what-happened
