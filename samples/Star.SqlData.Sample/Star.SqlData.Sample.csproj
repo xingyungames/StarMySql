@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <IsPackable>false</IsPackable>
+    <RootNamespace>Star.SqlData.Sample</RootNamespace>
+    <AssemblyName>Star.SqlData.Sample</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Star.SqlData\Star.SqlData.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- 演示 appSettings 配置方式；生产环境更推荐 STAR_DB_CONNECTION 环境变量。 -->
+    <None Update="app.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

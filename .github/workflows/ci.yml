@@ -1,0 +1,110 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  DOTNET_NOLOGO: true
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+
+jobs:
+  build-test:
+    name: 构建 / 测试 / 打包（含 MySQL 集成测试）
+    runs-on: ubuntu-latest
+
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: star_db
+          MYSQL_USER: star_app
+          MYSQL_PASSWORD: change_me
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping -h 127.0.0.1 -ustar_app -pchange_me"
+          --health-interval=5s
+          --health-timeout=5s
+          --health-retries=20
+
+    env:
+      # 集成测试与示例冒烟测试都读取这个变量
+      STAR_DB_CONNECTION: server=127.0.0.1;port=3306;database=star_db;user=star_app;password=change_me;charset=utf8mb4
+
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      - name: 安装 .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+          cache: true
+          cache-dependency-path: |
+            **/*.csproj
+            global.json
+
+      - name: 还原依赖
+        run: dotnet restore Star.SqlData.sln
+
+      - name: 构建
+        run: dotnet build Star.SqlData.sln -c Release --no-restore
+
+      - name: 单元测试 + 集成测试
+        run: >
+          dotnet test tests/Star.SqlData.Tests/Star.SqlData.Tests.csproj
+          -c Release --no-build
+          --logger "trx;LogFileName=test-results.trx"
+          --results-directory artifacts/test-results
+
+      - name: 示例冒烟（连接真实 MySQL）
+        run: dotnet run --project samples/Star.SqlData.Sample -c Release --no-build
+
+      - name: 打包校验
+        run: dotnet pack src/Star.SqlData/Star.SqlData.csproj -c Release --no-build -o artifacts/packages
+
+      - name: 上传测试结果与 NuGet 包
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ci-artifacts
+          path: |
+            artifacts/test-results/**
+            artifacts/packages/*.nupkg
+          if-no-files-found: warn
+
+  build-windows:
+    name: 构建与测试（Windows，无数据库）
+    runs-on: windows-latest
+
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      - name: 安装 .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+          cache: true
+          cache-dependency-path: |
+            **/*.csproj
+            global.json
+
+      - name: 还原并构建
+        run: dotnet build Star.SqlData.sln -c Release
+
+      # 没有 MySQL 时集成测试会自动跳过，单元测试必须全绿
+      - name: 测试
+        run: dotnet test tests/Star.SqlData.Tests/Star.SqlData.Tests.csproj -c Release --no-build

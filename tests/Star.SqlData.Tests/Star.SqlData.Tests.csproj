@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <IsPackable>false</IsPackable>
+    <RootNamespace>Star.SqlData.Tests</RootNamespace>
+    <AssemblyName>Star.SqlData.Tests</AssemblyName>
+    <!-- 测试方法名使用 xUnit 惯例（下划线分段），其余分析器保持默认。 -->
+    <NoWarn>$(NoWarn);CA1707;CA1861;CA1305;CA2007;CA1309</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
+    <PackageReference Include="xunit" Version="2.9.2" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Star.SqlData\Star.SqlData.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- 这些测试不依赖数据库，也不允许被数据库相关环境变量影响。 -->
+    <None Update="xunit.runner.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,18 @@
+<Project>
+
+  <!-- 仓库级公共编译设置：所有项目共享，避免在每个 csproj 里重复。 -->
+  <PropertyGroup>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Deterministic>true</Deterministic>
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
+    <AnalysisLevel>latest-recommended</AnalysisLevel>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <!-- 未写 XML 注释的公开成员不视为错误（CS1591）；CA1860 是 LINQ 风格偏好，本项目保留 Any() 写法。 -->
+    <NoWarn>$(NoWarn);CS1591;CA1860</NoWarn>
+    <ContinuousIntegrationBuild Condition="'$(CI)' == 'true'">true</ContinuousIntegrationBuild>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+</Project>

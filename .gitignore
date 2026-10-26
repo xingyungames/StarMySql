@@ -1,0 +1,92 @@
+# ---------------------------------------------------------------------------
+# .NET 构建产物
+# ---------------------------------------------------------------------------
+[Bb]in/
+[Oo]bj/
+[Oo]ut/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+build/
+bld/
+artifacts/
+[Ll]og/
+[Ll]ogs/
+*.dll
+*.exe
+*.so
+*.dylib
+*.pdb
+*.mdb
+*.cache
+*.snupkg
+*.nupkg
+*.nuspec.bak
+
+# 测试与覆盖率
+[Tt]est[Rr]esult*/
+coverage*.json
+coverage*.xml
+coverage*.info
+*.trx
+*.coverage
+*.cover
+coveragereport/
+
+# ---------------------------------------------------------------------------
+# IDE / 编辑器
+# ---------------------------------------------------------------------------
+.vs/
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.sln.iml
+*.userprefs
+*.DotSettings.user
+*.svclog
+*.psess
+*.Cache
+_ReSharper*/
+[Rr]e[Ss]harper*/
+*.DotCover
+Mono_Unstripped/
+
+# ---------------------------------------------------------------------------
+# 操作系统
+# ---------------------------------------------------------------------------
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# ---------------------------------------------------------------------------
+# 本地配置与密钥（永远不要提交）
+# ---------------------------------------------------------------------------
+*.local.json
+appsettings.local.json
+appsettings.Development.json
+.env
+.env.*
+secrets.json
+*.pfx
+*.key
+*.pem
+*.p12
+
+# 未跟踪源码的符号/包元数据
+*.pdb.meta
+*.nupkg.metadata
+
+# ---------------------------------------------------------------------------
+# 临时目录
+# ---------------------------------------------------------------------------
+_tmp/
+.tmp/
+temp/
+scratch/

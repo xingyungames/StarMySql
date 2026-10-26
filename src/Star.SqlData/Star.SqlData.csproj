@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net8.0</TargetFrameworks>
+    <RootNamespace>Star.SqlData</RootNamespace>
+    <AssemblyName>Star.SqlData</AssemblyName>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+
+    <!-- NuGet 包元数据（发布前请按需替换 Authors / RepositoryUrl） -->
+    <PackageId>Star.SqlData</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>StarDataBase contributors</Authors>
+    <Description>基于 MySQL 的轻量数据访问层：表名/字段名白名单校验、参数化查询、敏感字段脱敏、统一 ApiResponse 响应与通用仓储基类。</Description>
+    <PackageTags>mysql;data-access;repository;sql;whitelist;aspnetcore</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <!-- <RepositoryUrl>https://github.com/OWNER/StarDataBase</RepositoryUrl> -->
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MySql.Data" Version="9.4.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="Star.SqlData.Tests" />
+  </ItemGroup>
+
+</Project>
